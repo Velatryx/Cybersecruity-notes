@@ -24,28 +24,28 @@ TIP: see which Ip had the most requests
             ◇ File: 0-attack_ip.sh
         
 ==================================================================
-#!/bin/bash
+###!/bin/bash
 
 file=logs.txt
 grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" "$file" | sort | uniq -c | sort -rn | head -1 | awk '{print $2}'
 
 Explanation:
-# grep -o is for showing only the matching part, not the whole line
-# grep -E is for extended regex
-# \b is for establishing a word boundary. For instance if used without \b, grepping cat would also show cat, catnip, cats
+### grep -o is for showing only the matching part, not the whole line
+### grep -E is for extended regex
+### \b is for establishing a word boundary. For instance if used without \b, grepping cat would also show cat, catnip, cats
 we just want exact cat.
-# [0-9] means anything 0 to 9
-# {1,3} is for repeating this [0-9] 3 times (xxx instead of x)
-# \. Escaping dot to separate octets
-# () wrapping
-# {3} to repeat this for first three octets -> xxx.xxx.xxx.
-# closing with the same regex: [0-9]{1,3} to avoid a . in the end -> xxx.xxx.xxx.
+### [0-9] means anything 0 to 9
+### {1,3} is for repeating this [0-9] 3 times (xxx instead of x)
+### \. Escaping dot to separate octets
+### () wrapping
+### {3} to repeat this for first three octets -> xxx.xxx.xxx.
+### closing with the same regex: [0-9]{1,3} to avoid a . in the end -> xxx.xxx.xxx.
 
-# | sort | is for sorting to make duplicates grouped 
-# | uniq -c | is for counting the number of repeated ips -> Output: 20 10.0.0.1; 10 20.0.0.2
-# | sort -rn | -> sorting the numbers from “uniq -c” -r reverse (sort goes from lowest to highest, we make it go from highest to lowest.), -n numerically (we use it to indicate we dont want the sorting alphabetical, but rather numerical)
-# head -1, grepping the highest number (most repeated IP)
-# awk ‘{print $2}’ is to print only the IP address and not the number from uniq -c.
+### | sort | is for sorting to make duplicates grouped 
+### | uniq -c | is for counting the number of repeated ips -> Output: 20 10.0.0.1; 10 20.0.0.2
+### | sort -rn | -> sorting the numbers from “uniq -c” -r reverse (sort goes from lowest to highest, we make it go from highest to lowest.), -n numerically (we use it to indicate we dont want the sorting alphabetical, but rather numerical)
+### head -1, grepping the highest number (most repeated IP)
+### awk ‘{print $2}’ is to print only the IP address and not the number from uniq -c.
 
 ---
 
@@ -91,12 +91,12 @@ We need the endpoint. So choose $7
 -------------------------------------------------------
 Script:
 
-#!/bin/bash
+###!/bin/bash
 
 file=logs.txt
 
 awk ‘{print $7}’ “$file” | sort | uniq -c | sort -rn | head -1 | awk ‘{print $2}’
-# -n flag is for the command, not the content 
+### -n flag is for the command, not the content 
 
 ---
 
@@ -130,13 +130,13 @@ Requirements:
 
 Script:
 
-#!/bin/bash
+###!/bin/bash
 
 file=logs.txt
 
 awk '{print $1}' $file | sort | uniq -c | sort -rn | head -1 | awk ‘{print $1}’
 
-#We need to identify how many requests ATTACKER made, not how many requests was made in total.
+###We need to identify how many requests ATTACKER made, not how many requests was made in total.
 
 ---
 
@@ -171,11 +171,11 @@ python-requests/2.31.0
 
 Script:
 
-#!/bin/bash
+###!/bin/bash
 
 file=logs.txt
 
 awk '{print $12}' $file | sort | uniq -c | sort -rn | head -1 | tr -d '"' | awk '{print $2}' 
 
-#tr -d deletes the string
-#tr ‘a’ ‘b’ replaces a with b. tr ‘"’ ‘’ wont work.
+###tr -d deletes the string
+###tr ‘a’ ‘b’ replaces a with b. tr ‘"’ ‘’ wont work.
