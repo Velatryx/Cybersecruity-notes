@@ -1,4 +1,4 @@
-# This technical guide covers the most used and common privilege escalation vectors in linux
+## This technical guide covers the most used and common privilege escalation vectors in linux
 
 ---
 
