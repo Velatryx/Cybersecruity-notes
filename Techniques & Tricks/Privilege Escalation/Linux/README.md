@@ -1,3 +1,7 @@
+# This technical guide covers the most used and common privilege escalation vectors in linux
+
+---
+
 ## 1. Sudo Abuse & GTFOBins
 
 `sudo` allows users to run commands with elevated privileges (typically `root`). Misconfigurations happen when users are granted permission to run binaries that allow shell escapes or file modifications.
