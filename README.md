@@ -1,3 +1,9 @@
+## Cybersecurity Notes
+
+This repository is mainly intended for keeping notes for myself, and other people who are in Cybersecurity industry, heavily focusing on Red Team Operations & Penetration Testing. It will have a direct focus on toolings, methods, techniques, tricks, etc. used during pentests, and my learning phase.
+
+---
+
 ## Disclaimer & Legal Notice
 
 ### 1. Educational & Authorized Use Only
